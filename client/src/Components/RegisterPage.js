@@ -21,8 +21,10 @@ export default function RegisterPage() {
             });
             if (res && res.data.success) {
                 console.log(res.data && res.data.message);
+                alert('Registration successful');
                 navigate("/login");
             } else {
+                alert('Something went wrong in registration');
                 console.log.error(res.data.message);
             }
         } catch (error) {

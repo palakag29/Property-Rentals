@@ -1,13 +1,14 @@
 import Header from "./Header";
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 export default function LoginPage(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
+    const { name, setName } = useContext(UserContext);
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -17,8 +18,10 @@ export default function LoginPage(){
             });
             if (res && res.data.success) {
                 console.log(res.data && res.data.message);
+                setName(res.data.user.name);
                 navigate("/");
             } else {
+                alert('Invalid Email or Password');
                 console.log(res.data.message);
             }
         } catch (error) {

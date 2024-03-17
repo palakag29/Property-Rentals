@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const propertySchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
         trim: true,
@@ -19,10 +19,11 @@ const propertySchema = new mongoose.Schema({
         type: String,
         required: true,
     },  
-    images :{
+    photoLink :{
         type: String,
         required: true,
     },
+    // perks:[String],
 },
     { timestamps: true }
 );
