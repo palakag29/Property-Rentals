@@ -1,6 +1,5 @@
 import express from 'express';
 import propertyModel from '../models/propertyModel.js';
-import ExpressFormidable from 'express-formidable';
 import fs from 'fs';
 import mongoose from 'mongoose';
 
@@ -8,19 +7,15 @@ const router = express.Router();
 
 const createPropertyController = async (req, res) => {
     try {
-        const { name, location, price, description, imageUrl } = req.fields;
+        const { name, location, price, description, imageUrl } = req.body;
 
         if (!name || !description || !price || !location) {
             return res.status(500).send({ error: "Name, Description, Price, and Location are required fields" });
         }
 
-        const property = new propertyModel({ ...req.fields });
+        const property = new propertyModel({ name, location, price, description, imageUrl }).save();
 
-        if (imageUrl) {
-            property.images.url = imageUrl;
-        }
-
-        await property.save();
+        
 
         res.status(201).send({
             success: true,
@@ -38,6 +33,6 @@ const createPropertyController = async (req, res) => {
     }
 };
 
-router.post('/create-property', ExpressFormidable(), createPropertyController);
+router.post('/create-property', createPropertyController);
 
 export default router;
