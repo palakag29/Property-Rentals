@@ -18,6 +18,7 @@ export default function LoginPage(){
             });
             if (res && res.data.success) {
                 console.log(res.data && res.data.message);
+                alert('Login Successful');
                 setName(res.data.user.name);
                 navigate("/");
             } else {
