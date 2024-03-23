@@ -1,9 +1,19 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { UserContext } from "./UserContext";
-
+import { useNavigate } from 'react-router-dom';
 export default function Header(){
-    const { name } = useContext(UserContext);
+    // const { name } = useContext(UserContext);
+    const { name, setName } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        
+        setName(""); 
+       
+        navigate("/login"); 
+    };
+
   return (
       <header className='flex justify-between px-8 pt-4'>
           <a href className="flex items-center gap-1 pr-28">
@@ -40,7 +50,13 @@ export default function Header(){
                           {name}
                       </div>
                   )}
+                  
               </Link>
+              {name ? (
+                  <button onClick={handleLogout} className="py-2 px-4 rounded-3xl hover:bg-grey font-bold">Logout</button>
+              ) : (
+                  <Link to={'/login'} className="py-2 px-4 rounded-3xl hover:bg-grey font-bold">Login</Link>
+              )}
           </div>
           
       </header>
