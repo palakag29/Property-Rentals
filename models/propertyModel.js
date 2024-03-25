@@ -14,14 +14,20 @@ const propertySchema = new mongoose.Schema({
     price: {
         type: String,
         required: true,
+    }, 
+    owner: {
+        type: String,
+        required: true,
     },
     description: {
         type: String,
         required: true,
     },  
     photoLink :{
-        type: String,
-        required: true,
+        data:Buffer,
+        contentType:String
+        // type: String,
+        // required: true,
     },
     // perks:[String],
 },

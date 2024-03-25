@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from './routes/authRoutes.js'
 import propertyRoutes from './routes/propertyRoutes.js';
 import cors from  'cors'
-
+import Property from './models/propertyModel.js';
 dotenv.config();
 
 connectDB();
