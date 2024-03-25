@@ -7,6 +7,7 @@ import LoginPage from "./Components/LoginPage";
 import RegisterPage from "./Components/RegisterPage";
 import { UserContextProvider } from './Components/UserContext';
 import AddProperty from './Components/AddProperty';
+import Properties from './Components/Properties';
 function App() {
   return (
     <UserContextProvider>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/add-property" element={<AddProperty />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/properties" element={<Properties/>}/>
 
       </Routes>
     </UserContextProvider>
