@@ -23,7 +23,7 @@ export default function Properties() {
         <div className="px-20 grid grid-cols-4  mt-8 ">
             {properties.length > 0 && properties.map(p => (
                 <div key={p._id}>
-                    <div className="rounded-2xl flex max-w-60"  >
+                    <div className="rounded-2xl flex max-w-60 mt-4"  >
                         <img src={`${process.env.REACT_APP_API}/api/v1/property/photo/${p._id}`} alt={p.titke} className="object-cover aspect-square rounded-2xl " />
 
                     </div>
@@ -34,7 +34,7 @@ export default function Properties() {
                             <p>Rs.{p.price}</p>
                         </div>
                         <h5 className="text-sm">{p.location}</h5>
-                        <h5 className="truncate text-sm">{p.description}</h5>
+                        {/* <h5 className="truncate text-sm">{p.description}</h5> */}
 
                     </div>
 
